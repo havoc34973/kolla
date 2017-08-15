@@ -1,0 +1,40 @@
+FROM {{ namespace }}/{{ image_prefix }}neutron-base:{{ tag }}
+MAINTAINER {{ maintainer }}
+
+{% block neutron_f5_openstack_agent_header %}{% endblock %}
+
+{% import "macros.j2" as macros with context %}
+
+{% if install_type == 'binary' %}
+    {% if base_distro in ['centos', 'fedora', 'oraclelinux', 'rhel'] %}
+
+        {% set neutron_f5_openstack_agent_packages = [
+            'openstack-neutron-lbaas',
+            'openstack-neutron-vpnaas',
+        ] %}
+
+    {% elif base_distro in ['ubuntu'] %}
+
+        {% set neutron_f5_openstack_agent_packages = [
+            'neutron-lbaasv2-agent',
+            'python-neutron-lbaas',
+            'python-neutron-vpnaas',
+        ] %}
+
+    {% endif %}
+{% endif %}
+
+{{ macros.install_packages(neutron_f5_openstack_agent_packages | customizable("packages")) }}
+
+ADD plugins-archive /
+COPY extend_start.sh /usr/local/bin/kolla_neutron_extend_start
+RUN chmod 755 /usr/local/bin/kolla_neutron_extend_start \
+    && if [ "$(ls /plugins)" ]; then \
+           pip --no-cache-dir install --upgrade -c requirements/upper-constraints.txt /plugins/*; \
+       fi
+
+{% block neutron_f5_openstack_agent_footer %}{% endblock %}
+{% block footer %}{% endblock %}
+{{ include_footer }}
+
+USER neutron
