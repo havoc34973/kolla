@@ -12,12 +12,18 @@ MAINTAINER {{ maintainer }}
             'python-zaqarclient',
             'openstack-heat-engine'
         ] %}
+
     {% elif base_distro in ['ubuntu'] %}
         {% set heat_engine_packages = ['heat-engine'] %}
     {% endif %}
 {{ macros.install_packages(heat_engine_packages | customizable("packages")) }}
 
 {% endif %}
+
+RUN pip install f5-openstack-heat-plugins \
+    && mkdir -p /usr/lib/heat \
+    && ln -s /usr/lib/python2.7/site-packages/f5_heat /usr/lib/heat/f5_heat
+
 {% block heat_engine_footer %}{% endblock %}
 {% block footer %}{% endblock %}
 
