@@ -26,10 +26,6 @@ RUN ln -s heat-base-source/* heat \
 
 {% endif %}
 
-RUN pip install f5-openstack-heat-plugins \
-    && mkdir -p /usr/lib/heat \
-    && ln -s /usr/lib/python2.7/site-packages/f5_heat /usr/lib/heat/f5_heat
-
 COPY extend_start.sh /usr/local/bin/kolla_extend_start
 
 RUN usermod -a -G kolla heat \

@@ -43,6 +43,8 @@ firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewal
 {% elif neutron_plugin_agent == "linuxbridge" %}
 firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
 {% endif %}
+enable_security_group = True
+enable_ipset = True
 
 {% if neutron_plugin_agent == "openvswitch" %}
 [agent]

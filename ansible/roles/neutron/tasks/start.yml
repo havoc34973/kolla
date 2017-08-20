@@ -223,7 +223,6 @@
       - "{{ node_config_directory }}/neutron-dhcp-agent/:{{ container_config_directory }}/:ro"
       - "/etc/localtime:/etc/localtime:ro"
       - "/run/:/run/:shared"
-      - "/run/netns/:/run/netns/:shared"
       - "neutron_metadata_socket:/var/lib/neutron/kolla/"
       - "kolla_logs:/var/log/kolla/"
   when:
@@ -240,7 +239,6 @@
       - "{{ node_config_directory }}/neutron-l3-agent/:{{ container_config_directory }}/:ro"
       - "/etc/localtime:/etc/localtime:ro"
       - "/run:/run:shared"
-      - "/run/netns/:/run/netns/:shared"
       - "neutron_metadata_socket:/var/lib/neutron/kolla/"
       - "kolla_logs:/var/log/kolla/"
   when:
@@ -259,7 +257,6 @@
       - "{{ node_config_directory }}/neutron-lbaas-agent/:{{ container_config_directory }}/:ro"
       - "/etc/localtime:/etc/localtime:ro"
       - "/run:/run:shared"
-      - "/run/netns/:/run/netns/:shared"
       - "neutron_metadata_socket:/var/lib/neutron/kolla/"
       - "kolla_logs:/var/log/kolla/"
   when:
@@ -294,7 +291,6 @@
       - "{{ node_config_directory }}/neutron-vpnaas-agent/:{{ container_config_directory }}/:ro"
       - "/etc/localtime:/etc/localtime:ro"
       - "/run:/run:shared"
-      - "/run/netns/:/run/netns/:shared"
       - "neutron_metadata_socket:/var/lib/neutron/kolla/"
       - "kolla_logs:/var/log/kolla/"
   when:
@@ -312,7 +308,6 @@
       - "{{ node_config_directory }}/neutron-f5-openstack-agent/:{{ container_config_directory }}/:ro"
       - "/etc/localtime:/etc/localtime:ro"
       - "/run:/run:shared"
-      - "/run/netns/:/run/netns/:shared"
       - "neutron_metadata_socket:/var/lib/neutron/kolla/"
       - "kolla_logs:/var/log/kolla/"
   when:
