@@ -1,5 +1,6 @@
 # ml2_conf.ini
 [ml2]
+extension_drivers = port_security,dns
 {% if enable_ironic | bool %}
 tenant_network_types = vxlan, flat
 mechanism_drivers = openvswitch

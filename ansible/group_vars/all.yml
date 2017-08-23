@@ -124,6 +124,11 @@ congress_api_port: "1789"
 
 cloudkitty_api_port: "8889"
 
+designate_api_port: "9001"
+designate_bind_port: "53"
+designate_mdns_port: "5354"
+designate_rndc_port: "953"
+
 iscsi_port: "3260"
 
 gnocchi_api_port: "8041"
@@ -254,6 +259,7 @@ enable_cinder_backend_iscsi: "no"
 enable_cinder_backend_lvm: "no"
 enable_cloudkitty: "no"
 enable_congress: "no"
+enable_designate: "no"
 enable_etcd: "no"
 enable_gnocchi: "no"
 enable_grafana: "no"
@@ -287,6 +293,7 @@ enable_watcher: "no"
 ironic_keystone_user: "ironic"
 neutron_keystone_user: "neutron"
 nova_keystone_user: "nova"
+designate_keystone_user: "designate"
 
 # Nova fake driver and the number of fake driver per compute node
 enable_nova_fake: "no"
@@ -369,6 +376,13 @@ cinder_backend_ceph: "{{ enable_ceph }}"
 #######################
 # Valid options are [ ceilometer, gnocchi ]
 cloudkitty_collector_backend: "ceilometer"
+
+#######################
+## Designate options
+########################
+## Valid options are [ bind9 ]
+designate_backend: "bind9"
+designate_ns_record: "sample.openstack.org"
 
 
 #######################
