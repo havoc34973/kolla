@@ -194,7 +194,7 @@ f5_external_physical_mappings = default:1.1:True
 # VLANBindingBase class and provides the methods to bind and prune
 # VLAN tags to ports.
 #
-vlan_binding_driver = f5.oslbaasv1agent.drivers.bigip.vlan_binding.NullBinding
+#vlan_binding_driver = f5.oslbaasv1agent.drivers.bigip.vlan_binding.NullBinding
 #
 # The interface_port_static_mappings allows for a JSON encoded dictionary
 # mapping BIG-IP® devices and interfaces to corresponding ports. A port id can be
@@ -528,7 +528,7 @@ f5_bigip_lbaas_device_driver = f5_openstack_agent.lbaasv2.drivers.bigip.icontrol
 # self IPs, you should specify them as a comma
 # separated list below. 
 #
-icontrol_hostname = 192.168.60.21
+icontrol_hostname = 192.168.71.245
 #
 # If you are using vCMP® with VLANs, you will need to configure
 # your vCMP® host addresses, in addition to the guests addresses.
@@ -547,7 +547,7 @@ icontrol_username = admin
 # icontrol_password must be a valid Administrator password
 # on all devices in a device sync failover group.
 #
-icontrol_password = admin
+icontrol_password = kubePass6
 #
 ###############################################################################
 # Certificate Manager
